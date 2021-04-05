@@ -11,14 +11,18 @@ Dentro dessas etapas, algumas variáveis foram removidas, outras foram criadas e
 ![](figs/output2.png)
 
 
-### Subsegmento (categórica)
+### Valor emprestago (numérica)
 
 ![](figs/output3.png)
 
+### Pagamento diário (numérica)
+
 ![](figs/output4.png)
 
+### Divida total (numérica)
 ![](figs/output5.png)
 
+## Técnicas utilizadas
 Posteriormente, uma série de modelos foram testados como SVC, XGBoost, DecisionTree e RandomForest. Além disso, técnicas para lidar com dados desbalanceados como a SMOTE foram utilizadas e os hiperparâmetros também foram tunados, até chegarmos ao melhor modelo, como pode ser observado na tabela abaixo.
 
 
@@ -30,3 +34,9 @@ Posteriormente, uma série de modelos foram testados como SVC, XGBoost, Decision
 | XGBoost |  75% | 74% |
 | XGBoost SMOTE | 65% | 88%|
 | **RandomForest** | **82%** |**80%**|
+
+Além disso, utilizei o SHAP (SHapley Additive exPlanations) para identificar a importância de cada uma das features nos modelos. Todos sabemos que utilizar a `feature_importance` é extremamente *tricky*, até porque a definição de ganho de informação ou peso pode nos fornecer valores pouco confiáveis. É importante ressaltar que os valores de SHAP não fornecem causalidade, o que torna nossa análise ideal. Os resultados são mostrados abaixo:
+
+![](figs/shap.png)
+
+Desta análise, percebemos que algumas variáveis possuem um impacto relevante na saída do nosso modelo, como era de se esperar. Entre elas: valores baixos de `dias_ate_vencimento` e valores altos de `divida_total`. Ou seja, pessoas com dívidas totais altas a poucos dias do vencimento, tendem a ter um impacto maior na predição. Porém, algumas outras informações não são tão lógicas, como os subsegmentos. Observa-se que quando o subsegmento era "Alimentação rápida", "Bares e Restaurantes", "Comércio de alimentos", "Vestuário", "Oficinas automotivas", "Autopeças", "Salão de beleza" ou "Supermercados", o impacto no modelo também era maior. Talvez seja interessante ter sistemas de segurança extras quando a pessoa a requerer o crédito for de algum destes segmentos. 
