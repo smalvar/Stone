@@ -44,7 +44,12 @@ client = Client(n_workers=4, threads_per_worker=1)
 client
 
 ```
+### (corr)Relação das variáveis 
 
+
+![](figs/pairplot.png)
+
+Também podemos plotar um pairplot para identificar correlações entre as variáveis. Utilizei um sample com menos dados, para que seja possível visualizar alguma coisa com qualidade. Deste gráfico, podemos observar alguns comportamentos característicos da inadimplência: pagamento diário pequeno (em especial, quando faltam poucos dias até o vencimento), amortização principal diária baixa, poucos dias até o vencimento (quando um valor alto é pedido inicialmente) e, em especial, poucos dias até o vencimento. 
 
 ### Subsegmento (categórica)
 
