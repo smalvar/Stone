@@ -5,6 +5,47 @@ O case do Data Challenge da Stone se trata sobre estimar a probabilidade de faul
 
 Dentro dessas etapas, algumas variáveis foram removidas, outras foram criadas e funções de visualização também foram implementadas, permitindo que pudessemos entender quais subsegmentos possuem maiores clientes, risco de inadimplência, distribuição das variáveis etc, como podemos ver abaixo:
 
+### Bibliotecas
+
+As bibliotecas utilizadas durante os treinamentos ou testes foram:
+```
+from numpy.random import seed
+seed(1)
+import os
+#from sklearn.model_selection import StratifiedKFold
+#from sklearn.model_selection import RandomizedSearchCV, GridSearchCV
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+from sklearn.model_selection import train_test_split
+from sklearn import preprocessing,metrics
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.inspection import permutation_importance
+from sklearn.preprocessing import StandardScaler
+from sklearn.metrics import confusion_matrix, f1_score, classification_report, accuracy_score, auc, roc_curve, roc_auc_score, precision_recall_curve
+#from sklearn.utils import class_weight
+#from imblearn.over_sampling import SMOTE
+#from imblearn.over_sampling import ADASYN
+from xgboost import XGBClassifier
+from xgboost import plot_importance
+from sklearn.model_selection import train_test_split
+#from sklearn.model_selection import StratifiedShuffleSplit
+import pickle
+```
+
+Além disso, sugiro fortemente que seja utilizado o Dask, uma biblioteca de computação em paralelo, devido ao tamanho do banco de dados. Para isso, instale as bibliotecas do Dask necessária (eles possuem uma API para cada classe do SKlearn) e defina seu *client*:
+
+```
+
+from dask.distributed import Client
+
+client = Client(n_workers=4, threads_per_worker=1)
+client
+
+```
+
+
 ### Subsegmento (categórica)
 
 ![](figs/output1.png)
